@@ -1,20 +1,28 @@
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import {
   LayoutDashboard,
-  ShoppingCart,
-  Package,
-  Users,
-  Truck,
+  Users2,
+  ShoppingBasket,
+  DollarSign,
+  Download,
+  RotateCcw,
+  Folder,
+  Flag,
   Settings,
-  BarChart3,
+  UserCog,
+  Key,
+  Info,
+  ShieldCheck,
   FileText,
+  ScrollText,
+  LogOut,
   Music,
   Menu,
 } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 const sidebarItems = [
   {
@@ -22,44 +30,69 @@ const sidebarItems = [
     href: "/dashboard",
     icon: LayoutDashboard,
   },
-  //   {
-  //     title: "Orders",
-  //     href: "/dashboard/orders",
-  //     icon: ShoppingCart,
-  //   },
-  //   {
-  //     title: "Products",
-  //     href: "/dashboard/products",
-  //     icon: Package,
-  //   },
-  //   {
-  //     title: "Customers",
-  //     href: "/dashboard/customers",
-  //     icon: Users,
-  //   },
-  //   {
-  //     title: "Delivery",
-  //     href: "/dashboard/delivery",
-  //     icon: Truck,
-  //   },
-  //   {
-  //     title: "Analytics",
-  //     href: "/dashboard/analytics",
-  //     icon: BarChart3,
-  //   },
-  //   {
-  //     title: "Reports",
-  //     href: "/dashboard/reports",
-  //     icon: FileText,
-  //   },
-  //   {
-  //     title: "Settings",
-  //     href: "/dashboard/settings",
-  //     icon: Settings,
-  //   },
+  {
+    title: "Users",
+    href: "/dashboard/users",
+    icon: Users2,
+  },
+  {
+    title: "Products",
+    href: "/dashboard/products",
+    icon: ShoppingBasket,
+  },
+  {
+    title: "Earnings",
+    href: "/dashboard/earnings",
+    icon: DollarSign,
+  },
+  {
+    title: "Withdraw Request",
+    href: "/dashboard/withdraw",
+    icon: Download,
+  },
+  {
+    title: "Refund Request",
+    href: "/dashboard/refund",
+    icon: RotateCcw,
+  },
+  {
+    title: "Category",
+    href: "/dashboard/category",
+    icon: Folder,
+  },
+  {
+    title: "Report",
+    href: "/dashboard/report",
+    icon: Flag,
+  },
+
+  {
+    title: "About Us",
+    href: "/dashboard/about",
+    icon: Info,
+  },
+  {
+    title: "Buyer Protection",
+    href: "/dashboard/buyer-protection",
+    icon: ShieldCheck,
+  },
+  {
+    title: "Privacy Policy",
+    href: "/dashboard/privacy",
+    icon: FileText,
+  },
+  {
+    title: "Terms & Condition",
+    href: "/dashboard/terms",
+    icon: ScrollText,
+  },
+  {
+    title: "Logout",
+    href: "/logout",
+    icon: LogOut,
+  },
 ];
 
-// Desktop Sidebar Component
 function DesktopSidebar() {
   const location = useLocation();
 
@@ -89,7 +122,7 @@ function DesktopSidebar() {
                     className={cn(
                       "w-full justify-start gap-3 h-10",
                       isActive
-                        ? "bg-teal-50 text-teal-700 hover:bg-teal-100"
+                        ? "bg-teal-50 text-[#017783] hover:bg-teal-100"
                         : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
                     )}
                   >
@@ -106,7 +139,6 @@ function DesktopSidebar() {
   );
 }
 
-// Mobile Sidebar Component
 function MobileSidebar() {
   const location = useLocation();
   const [open, setOpen] = useState(false);
