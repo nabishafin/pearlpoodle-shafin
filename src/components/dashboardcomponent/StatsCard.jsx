@@ -15,10 +15,6 @@ const StatsCard = () => {
             <div className="text-xl sm:text-2xl font-bold text-gray-900">
               $12030
             </div>
-            <p className="text-xs text-green-600 flex items-center gap-1">
-              <TrendingUp className="h-3 w-3" />
-              +12% from last month
-            </p>
           </CardContent>
         </Card>
 
@@ -33,10 +29,6 @@ const StatsCard = () => {
             <div className="text-xl sm:text-2xl font-bold text-gray-900">
               $12030
             </div>
-            <p className="text-xs text-green-600 flex items-center gap-1">
-              <TrendingUp className="h-3 w-3" />
-              +8% from last month
-            </p>
           </CardContent>
         </Card>
 
@@ -51,10 +43,6 @@ const StatsCard = () => {
             <div className="text-xl sm:text-2xl font-bold text-gray-900">
               98
             </div>
-            <p className="text-xs text-green-600 flex items-center gap-1">
-              <TrendingUp className="h-3 w-3" />
-              +5% from last month
-            </p>
           </CardContent>
         </Card>
       </div>

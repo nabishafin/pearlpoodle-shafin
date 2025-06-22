@@ -185,7 +185,7 @@ function DesktopSidebar() {
                                   className={cn(
                                     "w-full justify-start gap-3 h-9 text-sm",
                                     isChildActive
-                                      ? "bg-teal-50 text-[#017783] hover:bg-teal-100"
+                                      ? "bg-white text-[#017783] "
                                       : "text-gray-500 hover:bg-gray-50 hover:text-gray-700"
                                   )}
                                 >
@@ -206,7 +206,7 @@ function DesktopSidebar() {
                       className={cn(
                         "w-full justify-start gap-3 h-10",
                         isActive
-                          ? "bg-teal-50 text-[#017783] hover:bg-teal-100"
+                          ? "bg-white text-[#017783] "
                           : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
                       )}
                     >
