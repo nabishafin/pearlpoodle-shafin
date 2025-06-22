@@ -20,7 +20,7 @@ export default function DashboardHeader() {
   };
 
   return (
-    <header className="bg-[#017783] text-white p-4">
+    <header className="bg-[#017783] text-white p-4 ">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
           {/* Mobile Sidebar Trigger */}
@@ -30,24 +30,17 @@ export default function DashboardHeader() {
 
           <div>
             <h1 className="text-lg sm:text-xl font-semibold">
-              <span className="hidden sm:inline">
-                Well Come to Dance Affair!
+              <span className="hidden sm:inline font-bold text-3xl">
+                Well Come to Dance Attix!!!
               </span>
-              <span className="sm:hidden">Dance Affair</span>
             </h1>
+            <h2 className="mt-2 text-sm">
+              Buy. Sell. Refresh your style, effortlessly today. !!!
+            </h2>
           </div>
         </div>
 
         <div className="flex items-center gap-2 sm:gap-4">
-          {/* Search - Hidden on very small screens */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="hidden sm:flex text-white hover:bg-teal-700"
-          >
-            <Search className="h-5 w-5" />
-          </Button>
-
           {/* Notifications */}
           <Button
             variant="ghost"
@@ -65,9 +58,9 @@ export default function DashboardHeader() {
             <DropdownMenuTrigger asChild>
               <Button
                 variant="ghost"
-                className="relative h-8 w-8 sm:h-10 sm:w-10 rounded-full"
+                className="relative h-12 w-12 sm:h-10 sm:w-10 rounded-full"
               >
-                <Avatar className="h-8 w-8 sm:h-10 sm:w-10">
+                <Avatar className="h-12 w-12 sm:h-10 sm:w-10">
                   <AvatarImage
                     src="/placeholder.svg?height=40&width=40"
                     alt="User"
@@ -91,7 +84,7 @@ export default function DashboardHeader() {
               </DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuItem>
-                <User className="mr-2 h-4 w-4" />
+                <User className="mr-2 h-8 w-8" />
                 <span>Profile</span>
               </DropdownMenuItem>
               <DropdownMenuItem>

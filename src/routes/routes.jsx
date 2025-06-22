@@ -13,9 +13,8 @@ import Category from "../pages/dashboardpages/Category";
 import Report from "../pages/dashboardpages/Report";
 
 // Settings Pages
-import SettingsLayout from "../pages/dashboardpages/settings/SettingsLayout";
-import PersonalInfo from "../pages/dashboardpages/settings/PersonalInfo";
-import ChangePassword from "../pages/dashboardpages/settings/ChangePassword";
+// import PersonalInformation from "../pages/dashboardpages/settings/PersonalInformation";
+// import ChangePassword from "../pages/dashboardpages/settings/ChangePassword";
 
 // Static Pages
 import AboutUs from "../pages/dashboardpages/AboutUs";
@@ -23,6 +22,8 @@ import BuyerProtection from "../pages/dashboardpages/BuyerProtection";
 import PrivacyPolicy from "../pages/dashboardpages/PrivacyPolicy";
 import TermsConditions from "../pages/dashboardpages/TermsConditions";
 import LogoutPage from "../pages/dashboardpages/LogoutPage";
+import PersonalInformation from "../pages/dashboardpages/PersonalInformation";
+import ChangePassword from "../pages/dashboardpages/ChangePassword";
 
 const routes = createBrowserRouter([
   {
@@ -47,20 +48,13 @@ const routes = createBrowserRouter([
       { path: "report", element: <Report /> },
 
       // Settings nested routes
-      {
-        path: "settings",
-        element: <SettingsLayout />,
-        children: [
-          { path: "personal", element: <PersonalInfo /> },
-          { path: "password", element: <ChangePassword /> },
-        ],
-      },
+      { path: "settings/personal", element: <PersonalInformation /> },
+      { path: "settings/password", element: <ChangePassword /> },
+      { path: "settings/about", element: <AboutUs /> },
+      { path: "settings/buyer-protection", element: <BuyerProtection /> },
+      { path: "settings/privacy", element: <PrivacyPolicy /> },
+      { path: "settings/terms", element: <TermsConditions /> },
 
-      // Static content pages
-      { path: "about", element: <AboutUs /> },
-      { path: "buyer-protection", element: <BuyerProtection /> },
-      { path: "privacy", element: <PrivacyPolicy /> },
-      { path: "terms", element: <TermsConditions /> },
       { path: "logout", element: <LogoutPage /> },
     ],
   },

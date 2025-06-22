@@ -17,6 +17,8 @@ import {
   LogOut,
   Music,
   Menu,
+  ChevronRight,
+  ChevronDown,
 } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
@@ -65,26 +67,42 @@ const sidebarItems = [
     href: "/dashboard/report",
     icon: Flag,
   },
-
   {
-    title: "About Us",
-    href: "/dashboard/about",
-    icon: Info,
-  },
-  {
-    title: "Buyer Protection",
-    href: "/dashboard/buyer-protection",
-    icon: ShieldCheck,
-  },
-  {
-    title: "Privacy Policy",
-    href: "/dashboard/privacy",
-    icon: FileText,
-  },
-  {
-    title: "Terms & Condition",
-    href: "/dashboard/terms",
-    icon: ScrollText,
+    title: "Settings",
+    href: "/dashboard/settings",
+    icon: Settings,
+    children: [
+      {
+        title: "Personal Information",
+        href: "/dashboard/settings/personal",
+        icon: UserCog,
+      },
+      {
+        title: "Change Password",
+        href: "/dashboard/settings/password",
+        icon: Key,
+      },
+      {
+        title: "About Us",
+        href: "/dashboard/settings/about",
+        icon: Info,
+      },
+      {
+        title: "Buyer Protection",
+        href: "/dashboard/settings/buyer-protection",
+        icon: ShieldCheck,
+      },
+      {
+        title: "Privacy Policy",
+        href: "/dashboard/settings/privacy",
+        icon: FileText,
+      },
+      {
+        title: "Terms & Condition",
+        href: "/dashboard/settings/terms",
+        icon: ScrollText,
+      },
+    ],
   },
   {
     title: "Logout",
@@ -95,6 +113,17 @@ const sidebarItems = [
 
 function DesktopSidebar() {
   const location = useLocation();
+  const [expandedItems, setExpandedItems] = useState([]);
+
+  const toggleExpanded = (href) => {
+    setExpandedItems((prev) =>
+      prev.includes(href)
+        ? prev.filter((item) => item !== href)
+        : [...prev, href]
+    );
+  };
+
+  const isExpanded = (href) => expandedItems.includes(href);
 
   return (
     <div className="hidden lg:flex h-full w-64 flex-col bg-white border-r border-gray-200">
@@ -110,26 +139,85 @@ function DesktopSidebar() {
       </div>
 
       {/* Navigation */}
-      <nav className="flex-1 p-4">
+      <nav className="flex-1 p-4 overflow-y-auto">
         <ul className="space-y-2">
           {sidebarItems.map((item) => {
             const isActive = location.pathname === item.href;
+            const hasChildren = item.children && item.children.length > 0;
+            const expanded = isExpanded(item.href);
+
             return (
               <li key={item.href}>
-                <Link to={item.href}>
-                  <Button
-                    variant="ghost"
-                    className={cn(
-                      "w-full justify-start gap-3 h-10",
-                      isActive
-                        ? "bg-teal-50 text-[#017783] hover:bg-teal-100"
-                        : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
-                    )}
-                  >
-                    <item.icon className="h-4 w-4" />
-                    {item.title}
-                  </Button>
-                </Link>
+                {hasChildren ? (
+                  <div>
+                    <Button
+                      variant="ghost"
+                      className={cn(
+                        "w-full justify-start gap-3 h-10",
+                        isActive
+                          ? "bg-teal-50 text-[#017783] hover:bg-teal-100"
+                          : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                      )}
+                      onClick={() => toggleExpanded(item.href)}
+                    >
+                      <item.icon className="h-4 w-4" />
+                      <span className="flex-1 text-left">{item.title}</span>
+                      {expanded ? (
+                        <ChevronDown className="h-4 w-4" />
+                      ) : (
+                        <ChevronRight className="h-4 w-4" />
+                      )}
+                    </Button>
+
+                    {/* Submenu */}
+                    <div
+                      className={cn(
+                        "overflow-hidden transition-all duration-200 ease-in-out",
+                        expanded ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+                      )}
+                    >
+                      <ul className="mt-2 ml-4 space-y-1">
+                        {item.children?.map((child) => {
+                          const isChildActive =
+                            location.pathname === child.href;
+                          return (
+                            <li key={child.href}>
+                              <Link to={child.href}>
+                                <Button
+                                  variant="ghost"
+                                  className={cn(
+                                    "w-full justify-start gap-3 h-9 text-sm",
+                                    isChildActive
+                                      ? "bg-teal-50 text-[#017783] hover:bg-teal-100"
+                                      : "text-gray-500 hover:bg-gray-50 hover:text-gray-700"
+                                  )}
+                                >
+                                  <child.icon className="h-3 w-3" />
+                                  {child.title}
+                                </Button>
+                              </Link>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </div>
+                  </div>
+                ) : (
+                  <Link to={item.href}>
+                    <Button
+                      variant="ghost"
+                      className={cn(
+                        "w-full justify-start gap-3 h-10",
+                        isActive
+                          ? "bg-teal-50 text-[#017783] hover:bg-teal-100"
+                          : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                      )}
+                    >
+                      <item.icon className="h-4 w-4" />
+                      {item.title}
+                    </Button>
+                  </Link>
+                )}
               </li>
             );
           })}
@@ -142,6 +230,17 @@ function DesktopSidebar() {
 function MobileSidebar() {
   const location = useLocation();
   const [open, setOpen] = useState(false);
+  const [expandedItems, setExpandedItems] = useState([]);
+
+  const toggleExpanded = (href) => {
+    setExpandedItems((prev) =>
+      prev.includes(href)
+        ? prev.filter((item) => item !== href)
+        : [...prev, href]
+    );
+  };
+
+  const isExpanded = (href) => expandedItems.includes(href);
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
@@ -172,26 +271,90 @@ function MobileSidebar() {
           </div>
 
           {/* Navigation */}
-          <nav className="flex-1 p-4">
+          <nav className="flex-1 p-4 overflow-y-auto">
             <ul className="space-y-2">
               {sidebarItems.map((item) => {
                 const isActive = location.pathname === item.href;
+                const hasChildren = item.children && item.children.length > 0;
+                const expanded = isExpanded(item.href);
+
                 return (
                   <li key={item.href}>
-                    <Link to={item.href} onClick={() => setOpen(false)}>
-                      <Button
-                        variant="ghost"
-                        className={cn(
-                          "w-full justify-start gap-3 h-10",
-                          isActive
-                            ? "bg-teal-50 text-teal-700 hover:bg-teal-100"
-                            : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
-                        )}
-                      >
-                        <item.icon className="h-4 w-4" />
-                        {item.title}
-                      </Button>
-                    </Link>
+                    {hasChildren ? (
+                      <div>
+                        <Button
+                          variant="ghost"
+                          className={cn(
+                            "w-full justify-start gap-3 h-10",
+                            isActive
+                              ? "bg-teal-50 text-teal-700 hover:bg-teal-100"
+                              : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                          )}
+                          onClick={() => toggleExpanded(item.href)}
+                        >
+                          <item.icon className="h-4 w-4" />
+                          <span className="flex-1 text-left">{item.title}</span>
+                          {expanded ? (
+                            <ChevronDown className="h-4 w-4" />
+                          ) : (
+                            <ChevronRight className="h-4 w-4" />
+                          )}
+                        </Button>
+
+                        {/* Submenu */}
+                        <div
+                          className={cn(
+                            "overflow-hidden transition-all duration-200 ease-in-out",
+                            expanded
+                              ? "max-h-96 opacity-100"
+                              : "max-h-0 opacity-0"
+                          )}
+                        >
+                          <ul className="mt-2 ml-4 space-y-1">
+                            {item.children?.map((child) => {
+                              const isChildActive =
+                                location.pathname === child.href;
+                              return (
+                                <li key={child.href}>
+                                  <Link
+                                    to={child.href}
+                                    onClick={() => setOpen(false)}
+                                  >
+                                    <Button
+                                      variant="ghost"
+                                      className={cn(
+                                        "w-full justify-start gap-3 h-9 text-sm",
+                                        isChildActive
+                                          ? "bg-teal-50 text-teal-700 hover:bg-teal-100"
+                                          : "text-gray-500 hover:bg-gray-50 hover:text-gray-700"
+                                      )}
+                                    >
+                                      <child.icon className="h-3 w-3" />
+                                      {child.title}
+                                    </Button>
+                                  </Link>
+                                </li>
+                              );
+                            })}
+                          </ul>
+                        </div>
+                      </div>
+                    ) : (
+                      <Link to={item.href} onClick={() => setOpen(false)}>
+                        <Button
+                          variant="ghost"
+                          className={cn(
+                            "w-full justify-start gap-3 h-10",
+                            isActive
+                              ? "bg-teal-50 text-teal-700 hover:bg-teal-100"
+                              : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                          )}
+                        >
+                          <item.icon className="h-4 w-4" />
+                          {item.title}
+                        </Button>
+                      </Link>
+                    )}
                   </li>
                 );
               })}
