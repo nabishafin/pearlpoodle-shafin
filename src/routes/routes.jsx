@@ -3,7 +3,7 @@ import SignInPage from "../pages/auth/SignInPage";
 import DashboardLayout from "../layouts/DashboardLayout";
 
 // Main Pages
-import DashboardOverview from "../components/dashboardcomponent/DashboardOverview";
+import DashboardOverview from "../pages/dashboardpages/DashboardOverview";
 import AllUsers from "../pages/dashboardpages/AllUsers";
 import Products from "../pages/dashboardpages/Products";
 import Earnings from "../pages/dashboardpages/Earnings";
@@ -11,17 +11,13 @@ import WithdrawRequest from "../pages/dashboardpages/WithdrawRequest";
 import RefundRequest from "../pages/dashboardpages/RefundRequest";
 import Category from "../pages/dashboardpages/Category";
 import Report from "../pages/dashboardpages/Report";
+import LogoutPage from "../pages/dashboardpages/LogoutPage";
 
-// Settings Pages
-// import PersonalInformation from "../pages/dashboardpages/settings/PersonalInformation";
-// import ChangePassword from "../pages/dashboardpages/settings/ChangePassword";
-
-// Static Pages
+//Settings Pages
 import AboutUs from "../pages/dashboardpages/AboutUs";
 import BuyerProtection from "../pages/dashboardpages/BuyerProtection";
 import PrivacyPolicy from "../pages/dashboardpages/PrivacyPolicy";
 import TermsConditions from "../pages/dashboardpages/TermsConditions";
-import LogoutPage from "../pages/dashboardpages/LogoutPage";
 import PersonalInformation from "../pages/dashboardpages/PersonalInformation";
 import ChangePassword from "../pages/dashboardpages/ChangePassword";
 

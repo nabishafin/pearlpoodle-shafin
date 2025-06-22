@@ -25,6 +25,7 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import logo from "../../assets/logo.png";
 
 const sidebarItems = [
   {
@@ -126,16 +127,12 @@ function DesktopSidebar() {
   const isExpanded = (href) => expandedItems.includes(href);
 
   return (
-    <div className="hidden lg:flex h-full w-64 flex-col bg-white border-r border-gray-200">
+    <div className="hidden lg:flex h-full w-64 flex-col bg-[#E8E8E8] border-r border-gray-200">
       {/* Logo */}
-      <div className="flex items-center gap-2 p-6 border-b border-gray-200">
-        <div className="bg-teal-600 p-2 rounded-lg">
-          <Music className="h-6 w-6 text-white" />
-        </div>
-        <div>
-          <h2 className="text-lg font-semibold text-gray-900">Dance Affair</h2>
-          <p className="text-sm text-gray-500">Admin Panel</p>
-        </div>
+      <div className="flex items-center p-6 flex-col  justify-center">
+        <img className="" src={logo} alt="logo" />
+        <h1 className="text-3xl py-1 font-bold ">Dance Attix</h1>
+        <p>Pre Loved Dancewear</p>
       </div>
 
       {/* Navigation */}
