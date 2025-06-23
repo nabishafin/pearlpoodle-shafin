@@ -40,7 +40,7 @@ const EarningsChart = () => {
   const chartConfig = {
     earnings: {
       label: "Earnings",
-      color: "hsl(180, 100%, 25%)",
+      color: "#017783",
     },
   };
 
@@ -123,7 +123,7 @@ const EarningsChart = () => {
               />
               <Bar
                 dataKey="earnings"
-                fill="hsl(180, 100%, 25%)"
+                fill="#017783"
                 radius={[2, 2, 0, 0]}
                 barSize={45}
                 className="hover:opacity-80 transition-opacity cursor-pointer"

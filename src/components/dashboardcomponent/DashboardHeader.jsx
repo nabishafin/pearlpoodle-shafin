@@ -20,7 +20,7 @@ export default function DashboardHeader() {
   };
 
   return (
-    <header className="bg-[#017783] text-white p-4 ">
+    <header className="bg-[#017783] text-white px-8 py-4 ">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
           {/* Mobile Sidebar Trigger */}
@@ -65,7 +65,7 @@ export default function DashboardHeader() {
                     src="/placeholder.svg?height=40&width=40"
                     alt="User"
                   />
-                  <AvatarFallback className="bg-teal-700 text-white text-xs sm:text-sm">
+                  <AvatarFallback className="bg-black text-white text-xs sm:text-sm">
                     DA
                   </AvatarFallback>
                 </Avatar>

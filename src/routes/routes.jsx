@@ -21,6 +21,11 @@ import TermsConditions from "../pages/dashboardpages/TermsConditions";
 import PersonalInformation from "../pages/dashboardpages/PersonalInformation";
 import ChangePassword from "../pages/dashboardpages/ChangePassword";
 
+// Auth pages
+import ForgotPassword from "../pages/auth/ForgotPassword";
+import OTPVerification from "../pages/auth/OTPVerification";
+import ResetPassword from "../pages/auth/ResetPassword";
+
 const routes = createBrowserRouter([
   {
     path: "/",
@@ -30,6 +35,19 @@ const routes = createBrowserRouter([
     path: "/signin",
     element: <SignInPage />,
   },
+  {
+    path: "/forgotpass",
+    element: <ForgotPassword />,
+  },
+  {
+    path: "/otpverification",
+    element: <OTPVerification />,
+  },
+  {
+    path: "/resetPassword",
+    element: <ResetPassword />,
+  },
+
   {
     path: "/dashboard",
     element: <DashboardLayout />,
