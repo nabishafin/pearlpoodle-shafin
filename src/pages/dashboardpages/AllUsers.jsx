@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -56,7 +56,7 @@ const generateMockUsers = () => {
     email: `user${i + 1}${domains[i % domains.length]}`,
     address: addresses[i % addresses.length],
     status: statuses[i % statuses.length],
-    createdAt: new Date(Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000), // Random date within last 30 days
+    createdAt: new Date(Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000),
   }));
 };
 
@@ -66,13 +66,11 @@ const AllUsers = () => {
   const [filterType, setFilterType] = useState("All Users");
   const [searchTerm, setSearchTerm] = useState("");
 
-  const usersPerPage = 12;
+  const usersPerPage = 10;
 
-  // Filter and search logic
   const filteredUsers = useMemo(() => {
     let filtered = users;
 
-    // Apply filter
     if (filterType !== "All Users") {
       if (filterType === "Recent Users") {
         const sevenDaysAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
@@ -84,7 +82,6 @@ const AllUsers = () => {
       }
     }
 
-    // Apply search
     if (searchTerm) {
       filtered = filtered.filter(
         (user) =>
@@ -97,14 +94,12 @@ const AllUsers = () => {
     return filtered;
   }, [users, filterType, searchTerm]);
 
-  // Pagination logic
   const totalPages = Math.ceil(filteredUsers.length / usersPerPage);
   const startIndex = (currentPage - 1) * usersPerPage;
   const endIndex = startIndex + usersPerPage;
   const currentUsers = filteredUsers.slice(startIndex, endIndex);
 
-  // Reset to first page when filter or search changes
-  React.useEffect(() => {
+  useEffect(() => {
     setCurrentPage(1);
   }, [filterType, searchTerm]);
 
@@ -126,13 +121,13 @@ const AllUsers = () => {
   return (
     <div className="">
       {/* Header */}
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold text-gray-900">
+      <div>
+        <h2 className="text-xl sm:text-2xl font-bold mb-5 text-white bg-[#017783] p-5 rounded-lg">
           All users ({filteredUsers.length})
-        </h1>
-
+        </h2>
+      </div>
+      <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-4">
-          {/* Filter Dropdown */}
           <Select value={filterType} onValueChange={setFilterType}>
             <SelectTrigger className="w-[180px]">
               <SelectValue placeholder="Select filter" />
@@ -145,7 +140,6 @@ const AllUsers = () => {
             </SelectContent>
           </Select>
 
-          {/* Search Input */}
           <div className="relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
             <Input
@@ -159,33 +153,45 @@ const AllUsers = () => {
       </div>
 
       {/* Table */}
-      <div className=" overflow-hidden">
+      <div className="overflow-hidden ">
         <Table>
           <TableHeader>
-            <TableRow className="bg-[#017783] hover:bg-teal-600">
-              <TableHead className="text-white font-semibold">ID</TableHead>
-              <TableHead className="text-white font-semibold">
+            <TableRow className="bg-[#017783] hover:bg-[#017783] text-center ">
+              <TableHead className="text-white font-semibold text-center">
+                ID
+              </TableHead>
+              <TableHead className="text-white font-semibold text-center">
                 User Name
               </TableHead>
-              <TableHead className="text-white font-semibold">Email</TableHead>
-              <TableHead className="text-white font-semibold">
+              <TableHead className="text-white font-semibold text-center">
+                Email
+              </TableHead>
+              <TableHead className="text-white font-semibold text-center">
                 Address
               </TableHead>
-              <TableHead className="text-white font-semibold">Status</TableHead>
-              <TableHead className="text-white font-semibold">Action</TableHead>
+              <TableHead className="text-white font-semibold text-center">
+                Status
+              </TableHead>
+              <TableHead className="text-white font-semibold text-center">
+                Action
+              </TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {currentUsers.map((user, index) => (
               <TableRow
                 key={user.id}
-                className={index % 2 === 0 ? "bg-gray-50" : "bg-white"}
+                className={`text-center ${
+                  index % 2 === 0 ? "bg-gray-50" : "bg-white"
+                }`}
               >
-                <TableCell className="font-medium">{user.id}</TableCell>
-                <TableCell>{user.name}</TableCell>
-                <TableCell>{user.email}</TableCell>
-                <TableCell>{user.address}</TableCell>
-                <TableCell>
+                <TableCell className="text-center font-medium">
+                  {user.id}
+                </TableCell>
+                <TableCell className="text-center">{user.name}</TableCell>
+                <TableCell className="text-center">{user.email}</TableCell>
+                <TableCell className="text-center">{user.address}</TableCell>
+                <TableCell className="text-center">
                   <span
                     className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(
                       user.status
@@ -194,11 +200,8 @@ const AllUsers = () => {
                     {user.status}
                   </span>
                 </TableCell>
-                <TableCell>
-                  <Button
-                    size="sm"
-                    className="bg-[#017783] hover:bg-teal-700 text-white"
-                  >
+                <TableCell className="text-center">
+                  <Button size="sm" className="bg-[#017783] text-white">
                     View details
                   </Button>
                 </TableCell>
@@ -226,7 +229,6 @@ const AllUsers = () => {
                 />
               </PaginationItem>
 
-              {/* Page Numbers */}
               {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
                 let pageNum;
                 if (totalPages <= 5) {
@@ -280,7 +282,7 @@ const AllUsers = () => {
         </div>
       )}
 
-      {/* No results message */}
+      {/* No results */}
       {filteredUsers.length === 0 && (
         <div className="text-center py-8 text-gray-500">
           No users found matching your criteria.

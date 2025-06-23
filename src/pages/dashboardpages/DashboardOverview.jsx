@@ -19,6 +19,7 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area";
 import StatsCard from "../../components/dashboardcomponent/StatsCard";
 import EarningsChart from "../../components/dashboardcomponent/EarningsChart";
+import RecentUsers from "../../components/dashboardcomponent/RecentUsers";
 
 const recentUsers = [
   {
@@ -84,6 +85,7 @@ export default function DashboardOverview() {
       <EarningsChart />
 
       {/* Recent Users Table - Mobile Responsive */}
+      <RecentUsers />
     </div>
   );
 }
