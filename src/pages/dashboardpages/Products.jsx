@@ -346,7 +346,7 @@ export default function Products() {
                       size="sm"
                       className={
                         product.status === "Approved"
-                          ? "bg-green-300 hover:bg-green-400 text-white"
+                          ? "bg-green-300 hover:bg-green-400 text-black"
                           : "bg-yellow-100 hover:bg-yellow-200 text-yellow-700"
                       }
                     >

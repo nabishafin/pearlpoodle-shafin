@@ -25,6 +25,7 @@ import ChangePassword from "../pages/dashboardpages/ChangePassword";
 import ForgotPassword from "../pages/auth/ForgotPassword";
 import OTPVerification from "../pages/auth/OTPVerification";
 import ResetPassword from "../pages/auth/ResetPassword";
+import EditPersonalInformation from "../pages/dashboardpages/EditPersonalInformation";
 
 const routes = createBrowserRouter([
   {
@@ -63,6 +64,7 @@ const routes = createBrowserRouter([
 
       // Settings nested routes
       { path: "settings/personal", element: <PersonalInformation /> },
+      { path: "settings/editpersonal", element: <EditPersonalInformation /> },
       { path: "settings/password", element: <ChangePassword /> },
       { path: "settings/about", element: <AboutUs /> },
       { path: "settings/buyer-protection", element: <BuyerProtection /> },

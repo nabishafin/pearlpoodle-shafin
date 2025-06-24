@@ -22,7 +22,7 @@ export default function DashboardHeader() {
   return (
     <header className="bg-[#017783] text-white px-8 py-4 ">
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-4">
+        <div className="flex items-center justify-center gap-4">
           {/* Mobile Sidebar Trigger */}
           <div className="lg:hidden">
             <DashboardSidebar />
@@ -40,14 +40,14 @@ export default function DashboardHeader() {
           </div>
         </div>
 
-        <div className="flex items-center gap-2 sm:gap-4">
+        <div className="flex items-center justify-center gap-2 sm:gap-4">
           {/* Notifications */}
           <Button
             variant="ghost"
             size="icon"
-            className="text-white hover:bg-teal-700 relative"
+            className="text-white bg-white rounded-full relative"
           >
-            <Bell className="h-4 w-4 sm:h-5 sm:w-5" />
+            <Bell className="h-4 w-4 sm:h-5 sm:w-5 text-black" />
             <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-4 w-4 sm:h-5 sm:w-5 flex items-center justify-center text-[10px] sm:text-xs">
               3
             </span>
