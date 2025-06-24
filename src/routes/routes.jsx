@@ -26,6 +26,10 @@ import ForgotPassword from "../pages/auth/ForgotPassword";
 import OTPVerification from "../pages/auth/OTPVerification";
 import ResetPassword from "../pages/auth/ResetPassword";
 import EditPersonalInformation from "../pages/dashboardpages/EditPersonalInformation";
+import EditAbout from "../pages/dashboardpages/EditAbout";
+import EditBuyerProtection from "../pages/dashboardpages/EditBuyerProtection";
+import EditPrivacyPolicy from "../pages/dashboardpages/EditPrivacyPolicy";
+import EditTerms from "../pages/dashboardpages/EditTerms";
 
 const routes = createBrowserRouter([
   {
@@ -65,11 +69,26 @@ const routes = createBrowserRouter([
       // Settings nested routes
       { path: "settings/personal", element: <PersonalInformation /> },
       { path: "settings/editpersonal", element: <EditPersonalInformation /> },
+
       { path: "settings/password", element: <ChangePassword /> },
+
       { path: "settings/about", element: <AboutUs /> },
+      { path: "settings/editabout", element: <EditAbout /> },
+
       { path: "settings/buyer-protection", element: <BuyerProtection /> },
+      {
+        path: "/dashboard/settings/editprotection",
+        element: <EditBuyerProtection />,
+      },
+
       { path: "settings/privacy", element: <PrivacyPolicy /> },
+      {
+        path: "/dashboard/settings/editprivacy",
+        element: <EditPrivacyPolicy />,
+      },
+
       { path: "settings/terms", element: <TermsConditions /> },
+      { path: "/dashboard/settings/editterms", element: <EditTerms /> },
 
       { path: "logout", element: <LogoutPage /> },
     ],
