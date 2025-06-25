@@ -31,6 +31,8 @@ import EditBuyerProtection from "../pages/dashboardpages/EditBuyerProtection";
 import EditPrivacyPolicy from "../pages/dashboardpages/EditPrivacyPolicy";
 import EditTerms from "../pages/dashboardpages/EditTerms";
 import AllNotifications from "../pages/dashboardpages/AllNotifications";
+import ReportDetailsPage from "../pages/dashboardpages/ReportDetailsPage";
+import ReportedUsersDetails from "../pages/dashboardpages/ReportedUsersDetails";
 
 const routes = createBrowserRouter([
   {
@@ -67,6 +69,8 @@ const routes = createBrowserRouter([
       { path: "refund", element: <RefundRequest /> },
       { path: "category", element: <Category /> },
       { path: "report", element: <Report /> },
+      { path: "reportdetails", element: <ReportDetailsPage /> },
+      { path: "reporteduserdetails", element: <ReportedUsersDetails /> },
 
       // Settings nested routes
       { path: "settings/personal", element: <PersonalInformation /> },

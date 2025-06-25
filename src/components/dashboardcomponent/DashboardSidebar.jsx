@@ -129,11 +129,13 @@ function DesktopSidebar() {
   return (
     <div className="hidden lg:flex h-full w-64 flex-col bg-[#E8E8E8] border-r border-gray-200">
       {/* Logo */}
-      <div className="flex items-center p-6 flex-col  justify-center">
-        <img className="" src={logo} alt="logo" />
-        <h1 className="text-3xl py-1 font-bold ">Dance Attix</h1>
-        <p>Pre Loved Dancewear</p>
-      </div>
+      <Link to={"/dashboard"}>
+        <div className="flex items-center p-6 flex-col  justify-center">
+          <img className="" src={logo} alt="logo" />
+          <h1 className="text-3xl py-1 font-bold ">Dance Attix</h1>
+          <p>Pre Loved Dancewear</p>
+        </div>
+      </Link>
 
       {/* Navigation */}
       <nav className="flex-1 p-4 overflow-y-auto">
