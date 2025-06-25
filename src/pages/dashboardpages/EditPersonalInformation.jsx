@@ -45,7 +45,7 @@ const EditPersonalInformation = () => {
   return (
     <div className="min-h-screen font-sans bg-gray-50">
       {/* Header */}
-      <div className="bg-[#017783] text-white p-4 text-xl font-semibold flex justify-between items-center">
+      <div className="bg-[#017783] text-white p-4 text-xl font-semibold flex justify-between items-center rounded-md">
         <span>Edit Personal Information</span>
       </div>
 

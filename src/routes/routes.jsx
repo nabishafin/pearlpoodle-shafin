@@ -30,6 +30,7 @@ import EditAbout from "../pages/dashboardpages/EditAbout";
 import EditBuyerProtection from "../pages/dashboardpages/EditBuyerProtection";
 import EditPrivacyPolicy from "../pages/dashboardpages/EditPrivacyPolicy";
 import EditTerms from "../pages/dashboardpages/EditTerms";
+import AllNotifications from "../pages/dashboardpages/AllNotifications";
 
 const routes = createBrowserRouter([
   {
@@ -58,6 +59,7 @@ const routes = createBrowserRouter([
     element: <DashboardLayout />,
     children: [
       { index: true, element: <DashboardOverview /> },
+      { path: "notificatons", element: <AllNotifications /> },
       { path: "users", element: <AllUsers /> },
       { path: "products", element: <Products /> },
       { path: "earnings", element: <Earnings /> },

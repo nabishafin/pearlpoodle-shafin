@@ -72,7 +72,7 @@ const ChangePassword = () => {
   return (
     <div className="  font-sans">
       {/* Header */}
-      <div className="bg-[#017783] text-white p-4 flex items-center space-x-3">
+      <div className="bg-[#017783] text-white p-4 flex items-center space-x-3 rounded-md">
         <button
           onClick={handleGoBack}
           className="hover:bg-white/10 p-1 rounded"

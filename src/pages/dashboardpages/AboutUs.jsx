@@ -13,7 +13,7 @@ const AboutUs = () => {
   return (
     <div className="font-sans pr-5">
       {/* Header */}
-      <h2 className="text-xl sm:text-2xl font-bold mb-5 text-white bg-[#017783] p-5 rounded-lg">
+      <h2 className="text-xl sm:text-2xl font-bold mb-5 text-white bg-[#017783] p-5 rounded-md">
         About Us
       </h2>
 

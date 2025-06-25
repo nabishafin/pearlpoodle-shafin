@@ -10,7 +10,7 @@ const PersonalInformation = () => {
   return (
     <div className="min-h-screen font-sans">
       {/* Header */}
-      <div className="bg-[#017783] hover:bg-[#017783] text-white p-4 text-xl font-semibold">
+      <div className="bg-[#017783] hover:bg-[#017783] text-white p-4 text-xl font-semibold rounded-md">
         Personal Information
       </div>
 
