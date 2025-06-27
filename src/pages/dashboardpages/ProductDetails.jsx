@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -10,7 +12,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Star, Phone, Mail, MapPin } from "lucide-react";
+import { Star, Phone, Mail, MapPin, ChevronLeft } from "lucide-react";
 
 const ProductDetails = () => {
   const productImages = [
@@ -29,7 +31,7 @@ const ProductDetails = () => {
       price: "$40",
       image: "/placeholder.svg?height=80&width=80",
       description:
-        "Elevate your style with this exquisite, striking, and sophisticated piece of our premium dress collection. This stunning dress is designed to make you stand out, offering both elegance and comfort. Perfect for any occasion, this dress combines timeless fashion with modern flair, ensuring you look and feel your best. Crafted with expert care, styling, and unmatched attention to our premium quality design and our very own unique collections.",
+        "Elevate your style with this exquisite dress from our premium collection. Perfect for any occasion, offering elegance and comfort.",
     },
     {
       id: 2,
@@ -37,24 +39,28 @@ const ProductDetails = () => {
       price: "$40",
       image: "/placeholder.svg?height=80&width=80",
       description:
-        "Elevate your style with this exquisite, striking, and sophisticated piece of our premium dress collection. This stunning dress is designed to make you stand out, offering both elegance and comfort. Perfect for any occasion, this dress combines timeless fashion with modern flair, ensuring you look and feel your best. Crafted with expert care, styling, and unmatched attention to our premium quality design and our very own unique collections.",
+        "Make a statement with our stunning sheath dress. A blend of timeless fashion and modern flair, crafted with care and quality.",
     },
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 flex">
-      {/* Left Side - Profile and Latest Products */}
-      <div className="w-1/2  border-r border-gray-200">
-        <div className="max-w-2xl mx-auto ">
-          {/* Profile Section */}
-          <Card className="mb-6  ">
+    <div className="p-4">
+      {/* Header */}
+      <div className="bg-[#017783] text-white p-4 flex items-center gap-3 mb-5 rounded-md">
+        <ChevronLeft className="h-6 w-6" />
+        <h1 className="text-lg font-medium">View Product Details</h1>
+      </div>
+
+      {/* Main Layout */}
+      <div className="flex flex-col lg:flex-row gap-6">
+        {/* Left Side */}
+        <div className="w-full lg:w-1/2 space-y-6">
+          {/* User Profile */}
+          <Card>
             <CardContent className="p-6">
               <div className="flex items-start gap-4">
                 <Avatar className="w-16 h-16">
-                  <AvatarImage
-                    src="/placeholder.svg?height=64&width=64"
-                    alt="Pearlpoodlee"
-                  />
+                  <AvatarImage src="/placeholder.svg" alt="User" />
                   <AvatarFallback>PP</AvatarFallback>
                 </Avatar>
 
@@ -62,7 +68,6 @@ const ProductDetails = () => {
                   <h2 className="text-xl font-bold text-gray-900 mb-2">
                     Pearlpoodlee
                   </h2>
-
                   <div className="space-y-1 text-sm text-gray-600 mb-3">
                     <div className="flex items-center gap-2">
                       <Mail className="w-4 h-4" />
@@ -79,10 +84,8 @@ const ProductDetails = () => {
                   </div>
 
                   <div className="flex items-center gap-2">
-                    <div className="flex items-center">
-                      <Star className="w-4 h-4 fill-orange-400 text-orange-400" />
-                      <span className="ml-1 font-semibold">4.74</span>
-                    </div>
+                    <Star className="w-4 h-4 fill-orange-400 text-orange-400" />
+                    <span className="font-semibold">4.74</span>
                     <span className="text-sm text-gray-500">177 Reviews</span>
                   </div>
                 </div>
@@ -90,41 +93,32 @@ const ProductDetails = () => {
             </CardContent>
           </Card>
 
-          {/* Latest Products Section */}
+          {/* Latest Products */}
           <div>
             <h3 className="text-lg font-semibold text-gray-900 mb-4">
               Latest products
             </h3>
-
             <div className="space-y-4">
               {latestProducts.map((product) => (
-                <Card key={product.id} className="border border-gray-200">
-                  <CardContent className="p-4">
-                    <div className="flex gap-4">
-                      <div className="flex-shrink-0">
-                        <img
-                          src={product.image || "/placeholder.svg"}
-                          alt={product.name}
-                          width={80}
-                          height={80}
-                          className="rounded-lg object-cover bg-pink-100"
-                        />
+                <Card key={product.id}>
+                  <CardContent className="p-4 flex gap-4">
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="w-20 h-20 rounded-lg object-cover bg-pink-100"
+                    />
+                    <div className="flex-1">
+                      <div className="flex justify-between items-start mb-2">
+                        <h4 className="font-semibold text-gray-900">
+                          {product.name}
+                        </h4>
+                        <span className="font-bold text-gray-900">
+                          {product.price}
+                        </span>
                       </div>
-
-                      <div className="flex-1">
-                        <div className="flex justify-between items-start mb-2">
-                          <h4 className="font-semibold text-gray-900">
-                            {product.name}
-                          </h4>
-                          <span className="font-bold text-gray-900">
-                            {product.price}
-                          </span>
-                        </div>
-
-                        <p className="text-sm text-gray-600 leading-relaxed">
-                          {product.description}
-                        </p>
-                      </div>
+                      <p className="text-sm text-gray-600">
+                        {product.description}
+                      </p>
                     </div>
                   </CardContent>
                 </Card>
@@ -132,54 +126,54 @@ const ProductDetails = () => {
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Right Side - Product Approval Interface */}
-      <div className="w-1/2">
-        <div className="mx-auto bg-gray-50 min-h-screen">
-          {/* Status Buttons */}
-          <div className="flex gap-2 p-4">
+        {/* Right Side */}
+        <div className="w-full lg:w-1/2 space-y-6">
+          {/* Action Buttons */}
+          <div className="flex gap-2">
             <Button
               variant="destructive"
-              className="flex-1 bg-red-500 hover:bg-red-600 text-white font-medium"
+              className="flex-1 bg-red-500 hover:bg-red-600"
             >
               Reject
             </Button>
-            <Button className="flex-1 bg-teal-600 hover:bg-teal-700 text-white font-medium">
-              Approved
+            <Button className="flex-1 bg-teal-600 hover:bg-teal-700">
+              Approve
             </Button>
           </div>
 
-          {/* Product Image Carousel */}
-          <div className="px-4 pb-4">
-            <div className="bg-gray-100 rounded-lg p-4 relative">
-              <Carousel className="w-full max-w-xs mx-auto">
-                <CarouselContent>
-                  {productImages.map((image, index) => (
-                    <CarouselItem key={index}>
-                      <div className="flex items-center justify-center p-4">
-                        <img
-                          src={image || "/placeholder.svg"}
-                          alt={`Product image ${index + 1}`}
-                          width={200}
-                          height={200}
-                          className="object-contain rounded-md"
-                        />
-                      </div>
-                    </CarouselItem>
-                  ))}
-                </CarouselContent>
-                <CarouselPrevious className="left-2" />
-                <CarouselNext className="right-2" />
-              </Carousel>
+          {/* Product Carousel */}
+          <Card>
+            <CardContent className="p-0">
+              <div className="relative">
+                <Carousel
+                  className="w-full max-w-md mx-auto"
+                  opts={{ align: "start", loop: true }}
+                  onSlideChange={(index) => setCurrentImageIndex(index)}
+                >
+                  <CarouselContent>
+                    {productImages.map((image, index) => (
+                      <CarouselItem key={index}>
+                        <div className="flex items-center justify-center p-4">
+                          <img
+                            src={image}
+                            alt={`Product image ${index + 1}`}
+                            className="w-64 h-64 object-contain rounded-md"
+                          />
+                        </div>
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                  <CarouselPrevious className="left-2" />
+                  <CarouselNext className="right-2" />
+                </Carousel>
 
-              {/* Image Counter */}
-              <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-                <div className="flex space-x-1">
+                {/* Image Dots */}
+                <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex space-x-1">
                   {productImages.map((_, index) => (
                     <div
                       key={index}
-                      className={`w-2 h-2 rounded-full ${
+                      className={`w-2 h-2 rounded-full transition-all ${
                         index === currentImageIndex
                           ? "bg-gray-800"
                           : "bg-gray-400"
@@ -188,64 +182,59 @@ const ProductDetails = () => {
                   ))}
                 </div>
               </div>
-            </div>
-          </div>
 
-          {/* Product Details */}
-          <Card className="mx-4 mb-4">
-            <CardContent className="p-4">
-              <div className="flex justify-between items-start mb-4">
-                <h2 className="text-lg font-semibold text-gray-900">
-                  Sheath Dress
-                </h2>
-                <span className="text-lg font-bold text-gray-900">$21</span>
-              </div>
+              {/* Product Info */}
+              <div className="p-4 space-y-4">
+                <div className="flex justify-between items-start">
+                  <h2 className="text-lg font-semibold text-gray-900">
+                    Sheath Dress
+                  </h2>
+                  <span className="text-lg font-bold text-gray-900">$21</span>
+                </div>
 
-              <div className="grid grid-cols-2 gap-y-2 gap-x-4 text-sm">
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Category:</span>
-                  <span className="text-gray-900">Shirt</span>
+                <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm">
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Category:</span>
+                    <span className="text-gray-900">Shirt</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Brand:</span>
+                    <span className="text-gray-900">Lotto</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Size:</span>
+                    <span className="text-gray-900">S (Small)</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Purchase price:</span>
+                    <span className="text-gray-900">$40</span>
+                  </div>
+                  <div className="flex justify-between col-span-2">
+                    <span className="text-gray-600">Condition:</span>
+                    <span className="text-gray-900">Brand New</span>
+                  </div>
+                  <div className="flex justify-between col-span-2">
+                    <span className="text-gray-600">Price type:</span>
+                    <Badge variant="secondary" className="text-xs">
+                      Negotiable
+                    </Badge>
+                  </div>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Brand:</span>
-                  <span className="text-gray-900">Lotto</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Size:</span>
-                  <span className="text-gray-900">S(Small)</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Purchase price:</span>
-                  <span className="text-gray-900">$40</span>
-                </div>
-                <div className="flex justify-between col-span-2">
-                  <span className="text-gray-600">Condition:</span>
-                  <span className="text-gray-900">Brand New</span>
-                </div>
-                <div className="flex justify-between col-span-2">
-                  <span className="text-gray-600">Price type:</span>
-                  <Badge variant="secondary" className="text-xs">
-                    Negotiable
-                  </Badge>
+
+                <div>
+                  <h3 className="text-base font-semibold text-gray-900 mb-1">
+                    Description
+                  </h3>
+                  <p className="text-sm text-gray-700 leading-relaxed">
+                    This facial cream is specially formulated to target and
+                    reduce dark spots, blemishes, and uneven skin tone. With its
+                    powerful ingredients, it helps brighten and promotes a
+                    smoother, clearer complexion.
+                  </p>
                 </div>
               </div>
             </CardContent>
           </Card>
-
-          {/* Description Section */}
-          <div className="px-4 pb-6">
-            <h3 className="text-base font-semibold text-gray-900 mb-3">
-              Description
-            </h3>
-            <div className="text-sm text-gray-700 leading-relaxed space-y-3">
-              <p>
-                This facial cream is specially formulated to target and reduce
-                dark spots, blemishes, and uneven skin tone. With its powerful
-                ingredients, it helps brighten and promotes a smoother, clearer
-                complexion.
-              </p>
-            </div>
-          </div>
         </div>
       </div>
     </div>

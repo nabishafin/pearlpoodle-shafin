@@ -35,6 +35,7 @@ import ReportDetailsPage from "../pages/dashboardpages/ReportDetailsPage";
 import ReportedUsersDetails from "../pages/dashboardpages/ReportedUsersDetails";
 import UserDetails from "../pages/dashboardpages/UserDetails";
 import ProductDetails from "../pages/dashboardpages/ProductDetails";
+import RefundDetailsPage from "../pages/dashboardpages/RefundDetailsPage";
 
 const routes = createBrowserRouter([
   {
@@ -73,6 +74,7 @@ const routes = createBrowserRouter([
       { path: "earnings", element: <Earnings /> },
       { path: "withdraw", element: <WithdrawRequest /> },
       { path: "refund", element: <RefundRequest /> },
+      { path: "refunddetails", element: <RefundDetailsPage /> },
       { path: "category", element: <Category /> },
       { path: "report", element: <Report /> },
       { path: "reportdetails", element: <ReportDetailsPage /> },
