@@ -28,7 +28,7 @@ const AboutUs = () => {
       </div>
 
       {/* About Content */}
-      <div className="space-y-6">
+      <div className="space-y-6 px-3">
         {aboutParagraphs.map((paragraph, index) => (
           <p key={index} className="text-gray-700 leading-relaxed text-justify">
             {paragraph}

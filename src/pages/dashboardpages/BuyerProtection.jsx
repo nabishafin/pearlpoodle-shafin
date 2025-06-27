@@ -15,7 +15,6 @@ const BuyerProtection = () => {
       <h2 className="text-xl sm:text-2xl font-bold mb-5 text-white bg-[#017783] p-5 rounded-lg">
         Buyer Protection
       </h2>
-
       {/* Edit Button */}
       <div className="flex justify-end p-4">
         <Link to="/dashboard/settings/editprotection">
@@ -25,15 +24,15 @@ const BuyerProtection = () => {
           </Button>
         </Link>
       </div>
-
       {/* Content */}
-      <div className="space-y-6">
+      <div className="space-y-6 px-3">
         {protectionParagraphs.map((paragraph, index) => (
           <p key={index} className="text-gray-700 leading-relaxed text-justify">
             {paragraph}
           </p>
         ))}
       </div>
+      px-4
     </div>
   );
 };

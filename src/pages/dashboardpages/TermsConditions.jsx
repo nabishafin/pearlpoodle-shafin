@@ -27,7 +27,7 @@ const TermsConditions = () => {
       </div>
 
       {/* Content */}
-      <div className="space-y-6">
+      <div className="space-y-6 px-3">
         {termsParagraphs.map((paragraph, index) => (
           <p key={index} className="text-gray-700 leading-relaxed text-justify">
             {paragraph}

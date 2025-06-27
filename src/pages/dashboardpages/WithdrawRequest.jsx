@@ -139,7 +139,7 @@ const WithdrawRequest = () => {
     <div className="">
       <div className="mx-auto">
         {/* Header */}
-        <div className="bg-[#017783] text-white p-4">
+        <div className="bg-[#017783] text-white p-4 rounded-md">
           <h1 className="text-xl font-semibold">Withdraw request</h1>
         </div>
 
