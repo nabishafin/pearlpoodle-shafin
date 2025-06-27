@@ -33,6 +33,8 @@ import EditTerms from "../pages/dashboardpages/EditTerms";
 import AllNotifications from "../pages/dashboardpages/AllNotifications";
 import ReportDetailsPage from "../pages/dashboardpages/ReportDetailsPage";
 import ReportedUsersDetails from "../pages/dashboardpages/ReportedUsersDetails";
+import UserDetails from "../pages/dashboardpages/UserDetails";
+import ProductDetails from "../pages/dashboardpages/ProductDetails";
 
 const routes = createBrowserRouter([
   {
@@ -62,8 +64,12 @@ const routes = createBrowserRouter([
     children: [
       { index: true, element: <DashboardOverview /> },
       { path: "notificatons", element: <AllNotifications /> },
+
       { path: "users", element: <AllUsers /> },
+      { path: "usersdetails", element: <UserDetails /> },
+
       { path: "products", element: <Products /> },
+      { path: "productsdetails", element: <ProductDetails /> },
       { path: "earnings", element: <Earnings /> },
       { path: "withdraw", element: <WithdrawRequest /> },
       { path: "refund", element: <RefundRequest /> },

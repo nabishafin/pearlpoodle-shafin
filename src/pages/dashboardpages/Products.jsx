@@ -16,6 +16,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { ChevronLeft, ChevronRight, MoreHorizontal } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const recentProducts = [
   {
@@ -236,9 +237,7 @@ export default function Products() {
     setCurrentPage(page);
   };
 
-  const handleViewDetails = (productId) => {
-    alert(`Viewing details for product ID: ${productId}`);
-  };
+  const handleViewDetails = (productId) => {};
 
   return (
     <div className="w-full mx-auto">
@@ -354,13 +353,15 @@ export default function Products() {
                     </Button>
                   </TableCell>
                   <TableCell className="text-center">
-                    <Button
-                      size="sm"
-                      onClick={() => handleViewDetails(product.id)}
-                      className="bg-[#017783] text-white border-[#017783]"
-                    >
-                      View Details
-                    </Button>
+                    <Link to={"/dashboard/productsdetails"}>
+                      <Button
+                        size="sm"
+                        onClick={() => handleViewDetails(product.id)}
+                        className="bg-[#017783] text-white border-[#017783]"
+                      >
+                        View Details
+                      </Button>
+                    </Link>
                   </TableCell>
                 </TableRow>
               ))}

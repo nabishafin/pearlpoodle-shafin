@@ -25,6 +25,7 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
+import { Link } from "react-router-dom";
 
 // Mock data for users
 const generateMockUsers = () => {
@@ -201,9 +202,11 @@ const AllUsers = () => {
                   </span>
                 </TableCell>
                 <TableCell className="text-center">
-                  <Button size="sm" className="bg-[#017783] text-white">
-                    View details
-                  </Button>
+                  <Link to={"/dashboard/usersdetails"}>
+                    <Button size="sm" className="bg-[#017783] text-white">
+                      View details
+                    </Button>
+                  </Link>
                 </TableCell>
               </TableRow>
             ))}
