@@ -44,7 +44,7 @@ const ProductDetails = () => {
   ];
 
   return (
-    <div className="p-4">
+    <div className=" ">
       {/* Header */}
       <div className="bg-[#017783] text-white p-4 flex items-center gap-3 mb-5 rounded-md">
         <ChevronLeft className="h-6 w-6" />
@@ -137,9 +137,7 @@ const ProductDetails = () => {
             >
               Reject
             </Button>
-            <Button className="flex-1 bg-teal-600 hover:bg-teal-700">
-              Approve
-            </Button>
+            <Button className="flex-1 bg-[#017783] ">Approve</Button>
           </div>
 
           {/* Product Carousel */}
