@@ -19,9 +19,7 @@ const RefundRequest = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
   const itemsPerPage = 10;
-  const totalPages = 7;
 
-  // Sample refund request data - Active requests
   const activeRequests = Array.from({ length: 45 }, (_, index) => ({
     id: `54852025`,
     userId: `User ${index + 1}`,
@@ -32,7 +30,6 @@ const RefundRequest = () => {
     status: "pending",
   }));
 
-  // Sample refund request data - History
   const historyRequests = Array.from({ length: 20 }, (_, index) => ({
     id: `54851${String(index + 100).padStart(3, "0")}`,
     userId: `User ${index + 20}`,
@@ -45,7 +42,6 @@ const RefundRequest = () => {
     processedDate: `${12 + index}-03-2025`,
   }));
 
-  // Filtered data based on search
   const filteredActiveRequests = activeRequests.filter(
     (request) =>
       request.userName.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -58,7 +54,6 @@ const RefundRequest = () => {
       request.email.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  // Pagination logic
   const paginatedRequests = filteredActiveRequests.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
@@ -71,12 +66,10 @@ const RefundRequest = () => {
   return (
     <div className=" ">
       <div className="mx-auto">
-        {/* Header */}
         <div className="bg-[#017783] text-white p-4 rounded-md mb-4">
           <h1 className="text-lg font-semibold">Refund request</h1>
         </div>
 
-        {/* Tabs and Search */}
         <div className="">
           <Tabs defaultValue="total-requests" className="w-full">
             <div className="flex items-center justify-between py-4 border-b">
@@ -112,29 +105,28 @@ const RefundRequest = () => {
               </div>
             </div>
 
-            {/* Total Requests Tab */}
             <TabsContent value="total-requests" className="mt-0">
               <Card className="rounded-none border-0">
                 <CardContent className="p-0">
                   <Table>
                     <TableHeader>
-                      <TableRow className="bg-[#017783] ">
-                        <TableHead className="text-white font-semibold">
+                      <TableRow className="bg-[#017783] hover:bg-[#017783]">
+                        <TableHead className="text-white font-semibold text-center">
                           User ID
                         </TableHead>
-                        <TableHead className="text-white font-semibold">
+                        <TableHead className="text-white font-semibold text-center">
                           User Name
                         </TableHead>
-                        <TableHead className="text-white font-semibold">
+                        <TableHead className="text-white font-semibold text-center">
                           Email
                         </TableHead>
-                        <TableHead className="text-white font-semibold">
+                        <TableHead className="text-white font-semibold text-center">
                           Req Date
                         </TableHead>
-                        <TableHead className="text-white font-semibold">
+                        <TableHead className="text-white font-semibold text-center">
                           Amount
                         </TableHead>
-                        <TableHead className="text-white font-semibold">
+                        <TableHead className="text-white font-semibold text-center">
                           Action
                         </TableHead>
                       </TableRow>
@@ -142,16 +134,22 @@ const RefundRequest = () => {
                     <TableBody>
                       {paginatedRequests.map((request, index) => (
                         <TableRow key={index} className="hover:bg-gray-50">
-                          <TableCell className="font-medium">
+                          <TableCell className="font-medium text-center">
                             {request.id}
                           </TableCell>
-                          <TableCell>{request.userName}</TableCell>
-                          <TableCell>{request.email}</TableCell>
-                          <TableCell>{request.reqDate}</TableCell>
-                          <TableCell className="font-semibold">
+                          <TableCell className="text-center">
+                            {request.userName}
+                          </TableCell>
+                          <TableCell className="text-center">
+                            {request.email}
+                          </TableCell>
+                          <TableCell className="text-center">
+                            {request.reqDate}
+                          </TableCell>
+                          <TableCell className="font-semibold text-center">
                             {request.amount}
                           </TableCell>
-                          <TableCell>
+                          <TableCell className="text-center">
                             <Link to={"/dashboard/refunddetails"}>
                               <Button
                                 size="sm"
@@ -169,26 +167,25 @@ const RefundRequest = () => {
               </Card>
             </TabsContent>
 
-            {/* History Tab */}
             <TabsContent value="history" className="mt-0">
               <Card className="rounded-none border-0">
                 <CardContent className="p-0">
                   <Table>
                     <TableHeader>
-                      <TableRow className="bg-[#017783] ">
-                        <TableHead className="text-white font-semibold">
+                      <TableRow className="bg-[#017783] hover:bg-[#017783]">
+                        <TableHead className="text-white font-semibold text-center">
                           User ID
                         </TableHead>
-                        <TableHead className="text-white font-semibold">
+                        <TableHead className="text-white font-semibold text-center">
                           User Name
                         </TableHead>
-                        <TableHead className="text-white font-semibold">
+                        <TableHead className="text-white font-semibold text-center">
                           Email
                         </TableHead>
-                        <TableHead className="text-white font-semibold">
+                        <TableHead className="text-white font-semibold text-center">
                           Req Date
                         </TableHead>
-                        <TableHead className="text-white font-semibold">
+                        <TableHead className="text-white font-semibold text-center">
                           Amount
                         </TableHead>
                       </TableRow>
@@ -196,13 +193,19 @@ const RefundRequest = () => {
                     <TableBody>
                       {filteredHistoryRequests.map((request, index) => (
                         <TableRow key={index} className="hover:bg-gray-50">
-                          <TableCell className="font-medium">
+                          <TableCell className="font-medium text-center">
                             {request.id}
                           </TableCell>
-                          <TableCell>{request.userName}</TableCell>
-                          <TableCell>{request.email}</TableCell>
-                          <TableCell>{request.reqDate}</TableCell>
-                          <TableCell className="font-semibold">
+                          <TableCell className="text-center">
+                            {request.userName}
+                          </TableCell>
+                          <TableCell className="text-center">
+                            {request.email}
+                          </TableCell>
+                          <TableCell className="text-center">
+                            {request.reqDate}
+                          </TableCell>
+                          <TableCell className="font-semibold text-center">
                             {request.amount}
                           </TableCell>
                         </TableRow>
@@ -215,7 +218,6 @@ const RefundRequest = () => {
           </Tabs>
         </div>
 
-        {/* Pagination */}
         <div className="bg-white border border-t-0 rounded-b-lg p-4">
           <div className="flex items-center justify-center gap-2">
             <Button
@@ -253,7 +255,12 @@ const RefundRequest = () => {
               variant="outline"
               size="sm"
               onClick={() =>
-                handlePageChange(Math.min(totalPages, currentPage + 1))
+                handlePageChange(
+                  Math.min(
+                    Math.ceil(filteredActiveRequests.length / itemsPerPage),
+                    currentPage + 1
+                  )
+                )
               }
               disabled={
                 currentPage ===

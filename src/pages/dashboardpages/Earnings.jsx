@@ -2,10 +2,6 @@ import EarningStats from "../../components/dashboardcomponent/EarningStats";
 import EarningsChart from "../../components/dashboardcomponent/EarningsChart";
 import TotalTransition from "../../components/dashboardcomponent/TotalTransition";
 
-// Sample data for the chart
-
-// Sample transaction data
-
 const Earnings = () => {
   return (
     <div className="min-h-screen bg-gray-50 ">

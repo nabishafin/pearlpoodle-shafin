@@ -32,7 +32,6 @@ const BuyerProtection = () => {
           </p>
         ))}
       </div>
-      px-4
     </div>
   );
 };

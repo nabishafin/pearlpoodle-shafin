@@ -97,18 +97,19 @@ const UserDetails = () => {
     switch (userData.status) {
       case "approved":
         return (
-          <div className="flex gap-2">
+          <div className="flex gap-2 w-full">
             <button
               onClick={() => updateUserStatus("blocked")}
               disabled={isLoading}
-              className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 disabled:opacity-50"
+              className="w-full px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 disabled:opacity-50"
             >
               {isLoading ? "Loading..." : "Block"}
             </button>
+
             <button
               onClick={() => updateUserStatus("verified")}
               disabled={isLoading}
-              className="px-4 py-2 bg-[#017783] text-white rounded-md hover:bg-teal-700 disabled:opacity-50"
+              className="w-full px-4 py-2 bg-[#017783] text-white rounded-md hover:bg-teal-700 disabled:opacity-50"
             >
               {isLoading ? "Loading..." : "Verify"}
             </button>
@@ -254,10 +255,7 @@ const UserDetails = () => {
           {/* Right Column - Feedback */}
           <div className="space-y-6">
             <div className="bg-white rounded-lg shadow-sm p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                Feedback
-              </h3>
-              <div className="flex flex-col items-end gap-2">
+              <div className="flex flex-col items-end gap-2 ">
                 <span
                   className={`px-3 py-1 rounded-full text-xs font-medium ${
                     userData.status === "approved"
@@ -272,6 +270,9 @@ const UserDetails = () => {
                 </span>
                 {getStatusButtons()}
               </div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-4 my-4">
+                Feedback
+              </h3>
               <div className="space-y-4">
                 {feedback.map((review) => (
                   <div
