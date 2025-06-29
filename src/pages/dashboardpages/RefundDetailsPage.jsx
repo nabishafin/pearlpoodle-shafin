@@ -41,7 +41,7 @@ export default function RefundDetailsPage() {
   };
 
   return (
-    <div className=" bg-gray-50">
+    <div className=" ">
       {/* Header */}
       <div className="bg-[#017783] text-white p-4 flex items-center rounded-md">
         <ChevronLeft className="w-6 h-6 mr-2" />
