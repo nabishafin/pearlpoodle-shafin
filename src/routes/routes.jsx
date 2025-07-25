@@ -37,7 +37,7 @@ import UserDetails from "../pages/dashboardpages/UserDetails";
 import ProductDetails from "../pages/dashboardpages/ProductDetails";
 import RefundDetailsPage from "../pages/dashboardpages/RefundDetailsPage";
 
-const Routes = createBrowserRouter([
+const routes = createBrowserRouter([
   {
     path: "/",
     element: <SignInPage />,
@@ -109,4 +109,4 @@ const Routes = createBrowserRouter([
   },
 ]);
 
-export default Routes;
+export default routes;
