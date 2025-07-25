@@ -5,7 +5,7 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Eye, EyeOff, User } from "lucide-react";
 import authlogo from "../../assets/bro.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Component() {
   const [showPassword, setShowPassword] = useState(false);
@@ -13,6 +13,7 @@ export default function Component() {
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const navigate = useNavigate();
 
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -37,7 +38,7 @@ export default function Component() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    navigate("/dashboard");
     const emailErr = validateEmail(email);
     const passwordErr = validatePassword(password);
 
@@ -87,11 +88,10 @@ export default function Component() {
                       setEmail(e.target.value);
                       if (emailError) setEmailError(""); // Clear error when user starts typing
                     }}
-                    className={`h-12 border-gray-300 focus:border-teal-500 focus:ring-teal-500 ${
-                      emailError
-                        ? "border-red-500 focus:border-red-500 focus:ring-red-500"
-                        : ""
-                    }`}
+                    className={`h-12 border-gray-300 focus:border-teal-500 focus:ring-teal-500 ${emailError
+                      ? "border-red-500 focus:border-red-500 focus:ring-red-500"
+                      : ""
+                      }`}
                   />
                   {emailError && (
                     <p className="text-sm text-red-600 mt-1">{emailError}</p>
@@ -115,11 +115,10 @@ export default function Component() {
                         setPassword(e.target.value);
                         if (passwordError) setPasswordError(""); // Clear error when user starts typing
                       }}
-                      className={`h-12 border-gray-300 focus:border-teal-500 focus:ring-teal-500 pr-12 ${
-                        passwordError
-                          ? "border-red-500 focus:border-red-500 focus:ring-red-500"
-                          : ""
-                      }`}
+                      className={`h-12 border-gray-300 focus:border-teal-500 focus:ring-teal-500 pr-12 ${passwordError
+                        ? "border-red-500 focus:border-red-500 focus:ring-red-500"
+                        : ""
+                        }`}
                     />
                     <button
                       type="button"
